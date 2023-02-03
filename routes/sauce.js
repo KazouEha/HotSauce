@@ -6,7 +6,7 @@ const {
     getOneSauce,
     deleteSauce,
     modifySauce,
-    likeSauce,
+    likeOrDislikeSauce,
 } = require("../controllers/sauce");
 const { validAuth } = require('../middleware/auth');
 const  multer  = require('../middleware/multer-config');
@@ -18,5 +18,6 @@ saucesRoutes.post('/', multer, createSauce);
 saucesRoutes.get('/:id', getOneSauce);
 saucesRoutes.put('/:id', multer, modifySauce);
 saucesRoutes.delete('/:id', deleteSauce);
+saucesRoutes.post('/:id/like', likeOrDislikeSauce);
 
 module.exports = saucesRoutes;
