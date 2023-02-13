@@ -102,7 +102,6 @@ exports.modifySauce = (req, res, next) => {
   })
   .then((sauce) => {
     const oldImgUrl = sauce.imageUrl;
-    console.log(oldImgUrl);
     updateTheSauce(oldImgUrl);
   })
   .catch(

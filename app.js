@@ -11,8 +11,6 @@ const user = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const dbname = process.env.DB_NAME;
 
-console.log(process.env);
-
 mongoose.connect(`mongodb+srv://${user}:${password}@${dbname}.dqpylwm.mongodb.net/?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
