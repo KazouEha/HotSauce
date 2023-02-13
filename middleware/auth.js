@@ -16,9 +16,16 @@ function validAuth(req, res, next) {
     if (token == null)
         return res.status(403).send({ message: "Token cannot be null" });
 
-    jwt.verify(token, 'RANDOM_TOKEN_SECRET', (err, decoded) => {
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET', (err, decoded) => {
+        //req.auth => userid
         if (err)
             return res.status(403).send({ message: "Token invalid " });
+        if(decoded){
+            const userId = decoded.userId;
+            req.auth = {
+                userId: userId
+            }
+        }
         console.log("the token is valid, we continue");
         next();
     });

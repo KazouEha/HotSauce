@@ -6,8 +6,14 @@ const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const app = express();
 const router = express.Router();
+require('dotenv').config();
+const user = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+const dbname = process.env.DB_NAME;
 
-mongoose.connect('mongodb+srv://kazou:kazou@hotsaucep6.dqpylwm.mongodb.net/?retryWrites=true&w=majority',
+console.log(process.env);
+
+mongoose.connect(`mongodb+srv://${user}:${password}@${dbname}.dqpylwm.mongodb.net/?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -22,7 +28,6 @@ app.use((req, res, next) => {
 
 app.use(cors());
 app.use(express.json());
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
