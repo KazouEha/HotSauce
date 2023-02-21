@@ -11,6 +11,7 @@ const {
 const { validAuth } = require('../middleware/auth');
 const  multer  = require('../middleware/multer-config');
 
+//we use express.Router to redirect the request and we use the middleware ValidAuth to verify if the user is authorized
 saucesRoutes.use(validAuth);
 
 saucesRoutes.get('/', getAllSauce);

@@ -1,3 +1,5 @@
+//routes for user signup and user login
+
 const express = require('express');
 const router = express.Router();
 
