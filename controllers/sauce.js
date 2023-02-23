@@ -9,26 +9,18 @@ const fs = require('fs');
  * @param {*} next 
  */
 exports.getAllSauce = (req, res, next) => {
-  try {
 
-    Sauce.find().then(
-      (sauces) => {
-        res.status(200).json(sauces);
-      }
-    )
-    
-    .catch(
-      (error) => {
-        res.status(400).json({error: error});
-      }
-    );
-
-  } catch {
-
-    return res.status(500).json({ message: 'Impossible to get all sauces'});
-
-  }
+  Sauce.find().then(
+    (sauces) => {
+      res.status(200).json(sauces);
+    }
+  )
   
+  .catch(
+    (error) => {
+      res.status(400).json({error: error});
+    }
+  );
 
 };
 
