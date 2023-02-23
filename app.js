@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', true);
 const express = require('express');
 const path = require('path');
 const cors = require ('cors');
